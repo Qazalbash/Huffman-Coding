@@ -1,8 +1,12 @@
-run:
-	./code message.txt code.txt
+CXX = g++
+CXXFLAGS = -Wall -Wextra -Werror -O3 -g
+SRCS = code
+ 
+$(SRCS) : $(SRCS).cpp
+	$(CXX) $(CXXFLAGS) -o $(SRCS) $(SRCS).cpp
 
-built:
-	g++ code.cpp -Wall -O -o code
-	
+run: $(SRCS)
+	./$(SRCS) message.txt code.txt
+
 clean:
-	rm code
+	rm -f $(SRCS)
